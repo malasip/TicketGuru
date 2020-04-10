@@ -9,7 +9,6 @@ import static org.springframework.hateoas.mvc.ControllerLinkBuilder.*;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DuplicateKeyException;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -27,7 +26,6 @@ import org.springframework.hateoas.Resource;
 import org.springframework.hateoas.Resources;
 import org.springframework.http.ResponseEntity;
 
-@CrossOrigin(origins = "http://localhost:3000")
 @RestController
 @RequestMapping(value = "/api/ageLimits", produces = "application/hal+json")
 public class AgeLimitController {

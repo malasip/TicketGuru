@@ -13,7 +13,6 @@ import org.springframework.hateoas.Link;
 import org.springframework.hateoas.Resource;
 import org.springframework.hateoas.Resources;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
@@ -29,7 +28,6 @@ import fi.rbmk.ticketguru.eventTicket.*;
 import fi.rbmk.ticketguru.venue.*;
 import fi.rbmk.ticketguru.ageLimit.*;
 
-@CrossOrigin(origins = "http://localhost:3000")
 @RestController
 @RequestMapping(value = "/api/events", produces = "application/hal+json")
 public class EventController {

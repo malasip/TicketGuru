@@ -13,7 +13,6 @@ import org.springframework.hateoas.Link;
 import org.springframework.hateoas.Resource;
 import org.springframework.hateoas.Resources;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
@@ -26,7 +25,6 @@ import org.springframework.web.bind.annotation.RestController;
 import fi.rbmk.ticketguru.saleRow.*;
 import fi.rbmk.ticketguru.user.*;
 
-@CrossOrigin(origins = "http://localhost:3000")
 @RestController
 @RequestMapping(value = "/api/saleEvents", produces = "application/hal+json")
 public class SaleEventController {
