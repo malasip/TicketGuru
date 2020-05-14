@@ -74,22 +74,6 @@ public class SaleEventController {
         }
     }
 
-	// @PostMapping(produces = "application/hal+json")
-	// ResponseEntity<?> add(@Valid @RequestBody SaleEvent newSaleEvent) {
-	// 	try {
-	// 		if (newSaleEvent.getUser().getInvalid() != null) {
-	// 			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Cannot link User that is marked as deleted");
-	// 		}
-	// 		SaleEvent saleEvent = sERepository.save(newSaleEvent);
-	// 		SaleEventLinks links = new SaleEventLinks(saleEvent);
-	// 		saleEvent.add(links.getAll());
-	// 		Resource<SaleEvent> resource = new Resource<SaleEvent>(saleEvent);
-	// 		return ResponseEntity.created(URI.create(saleEvent.getId().getHref())).body(resource);
-	// 	} catch (DataIntegrityViolationException e) {
-	// 		throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Duplicate entry");
-	// 	}
-	// }
-
     @PostMapping(produces = "application/hal+json")
     ResponseEntity<?> add(@RequestBody JsonNode requestBody) {
 		User user = null;
