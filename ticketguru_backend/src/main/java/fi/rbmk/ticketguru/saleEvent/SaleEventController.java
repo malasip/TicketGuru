@@ -126,6 +126,8 @@ public class SaleEventController {
                     SaleRow saleRow = sRRepository.save(newSaleRow);
                     ResponseEntity<?> response = tService.generateTickets(saleRow, eventTicket, jsonNode.get("count").asLong());
                     if (response.getStatusCode() == HttpStatus.BAD_REQUEST) {
+						saleRow.setInvalid();
+						sRRepository.save(saleRow);
                         return response;
                     }
 				}

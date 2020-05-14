@@ -13,6 +13,7 @@ import org.springframework.data.rest.webmvc.ResourceNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 import fi.rbmk.ticketguru.constraintViolationParser.ConstraintViolationParser;
 import fi.rbmk.ticketguru.eventTicket.EventTicket;
@@ -35,6 +36,9 @@ public class TicketService {
         TicketStatus ticketStatus = tStatusRepository.findById(Integer.toUnsignedLong(1)).orElseThrow(() -> new ResourceNotFoundException("Invalid ID: 1"));
         // Create a test ticket to check that all required values have been passed
         Ticket tmpTicket = new Ticket(eventTicket, saleRow, ticketStatus);
+        if (eventTicket.getTicketCount() - tRepository.findByEventTicket(eventTicket).size() <= count) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Not enough tickets left to sell.");
+        }
         Set<ConstraintViolation<Object>> violations = validator.validate(tmpTicket);
         if (!violations.isEmpty()) {
             ConstraintViolationParser constraintViolationParser = new ConstraintViolationParser(violations, HttpStatus.BAD_REQUEST);
