@@ -136,6 +136,8 @@ public class SaleEventController {
                 Resource<SaleEvent> resource = new Resource<SaleEvent>(saleEvent);
             return ResponseEntity.ok(resource);
             } else {
+				saleEvent.setInvalid();
+				sERepository.save(saleEvent);
                 throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Missing saleRow from json body");
             }
         } catch (DataIntegrityViolationException e) {
